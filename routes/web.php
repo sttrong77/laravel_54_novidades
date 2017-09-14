@@ -15,4 +15,18 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::resource('pages', 'Admin\PagesController');
+/*Route::group(['prefix'=>'admin', 'middleware'=>'auth'], function(){
+    Route::resource('pages', 'Admin\PagesController');
+});
+*/
+
+Route::prefix('admin')
+        ->middleware('auth')
+        ->group(function(){
+            Route::resource('pages', 'Admin\PagesController');
+        });
+
+Auth::routes();
+
+
+Route::get('/home', 'HomeController@index')->name('home');
