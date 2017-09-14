@@ -1,12 +1,15 @@
 @component('admin.layouts.elements.body')
 @slot('title') Páginas @endslot
 @slot('description') Gerenciamento de Páginas @endslot
+
+<a href="{{route('pages.create')}}" class="btn btn-xs btn-default">novo</a>
+
 <table class="table table-striped">
     <thead>
         <tr>
             <th>#</th>
             <th>Título</th>
-            <th>Ações</th>
+            <th class="text-right">Ações</th>
         </tr>
     </thead>
     <tbody>
@@ -14,7 +17,11 @@
         <tr>
             <td>{{ $page->id }}</td>
             <td>{{ $page->title }}</td>
-            <td>##</td>
+            <td class="text-right">
+                <a href="{{route('pages.show', $page->id)}}" class="btn btn-default btx xs">
+                    <span class="glyphicon glyphicon-plus"></span>
+                </a>
+            </td>
         </tr>
         @endforeach
     </tbody>
