@@ -19,4 +19,6 @@
         @endforeach
     </tbody>
 </table>
+
+    {{ $pages->links() }}
 @endcomponent
